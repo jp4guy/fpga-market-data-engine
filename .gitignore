@@ -3,3 +3,6 @@ obj_dir/
 *.fst
 *.log
 *.out
+Vtb_*
+verilated*.d
+verilated*.o
