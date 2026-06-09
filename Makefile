@@ -122,3 +122,8 @@ event_stress:
 event_stress_trace:
 >$(VERILATOR) $(FLAGS) $(EVENT_ENGINE_SRCS) sim/tb_event_streaming_stress.sv -o event_streaming_stress_test
 >./obj_dir/event_streaming_stress_test +NUM_EVENTS=$(EVENT_TRACE_EVENTS) +TRACE
+.PHONY: event_parser
+
+event_parser:
+>$(VERILATOR) $(FLAGS) rtl/market_types_pkg.sv rtl/event_packet_parser.sv sim/tb_event_packet_parser.sv -o event_parser_test
+>./obj_dir/event_parser_test
