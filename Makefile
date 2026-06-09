@@ -55,3 +55,16 @@ clean:
 >rm -rf obj_dir
 >rm -f *.vcd *.fst
 >rm -f Vtb_* verilated*.d verilated*.o
+
+STRESS_PACKETS ?= 100000
+TRACE_PACKETS ?= 500
+
+.PHONY: stress stress_trace
+
+stress:
+>$(VERILATOR) $(FLAGS) sim/tb_streaming_stress.sv rtl/market_data_engine.sv rtl/market_data_frontend.sv rtl/fifo.sv rtl/packet_parser.sv rtl/order_book.sv rtl/signal_engine.sv -o streaming_stress_test
+>./obj_dir/streaming_stress_test +NUM_PACKETS=$(STRESS_PACKETS)
+
+stress_trace:
+>$(VERILATOR) $(FLAGS) sim/tb_streaming_stress.sv rtl/market_data_engine.sv rtl/market_data_frontend.sv rtl/fifo.sv rtl/packet_parser.sv rtl/order_book.sv rtl/signal_engine.sv -o streaming_stress_test
+>./obj_dir/streaming_stress_test +NUM_PACKETS=$(TRACE_PACKETS) +TRACE
