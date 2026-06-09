@@ -41,6 +41,13 @@ module fifo #(
             rd_data <= '0;
             count   <= '0;
         end else begin
+            assert (count <= DEPTH_COUNT)
+                else $error("FIFO count exceeded depth");
+            assert (!(wr_en && full))
+                else $error("FIFO write requested while full");
+            assert (!(rd_en && empty))
+                else $error("FIFO read requested while empty");
+
             if (do_write) begin
                 mem[wr_ptr] <= wr_data;
                 wr_ptr <= wr_ptr + 1'b1;

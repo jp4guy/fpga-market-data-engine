@@ -45,6 +45,17 @@ module signal_engine #(
 
                 trade_signal  <= (spread_calc <= SPREAD_THRESHOLD);
             end
+
+            if (signal_valid) begin
+                assert (signal_bid != 23'd0)
+                    else $error("signal_valid asserted with zero bid");
+                assert (signal_ask != 23'd0)
+                    else $error("signal_valid asserted with zero ask");
+                assert (signal_ask >= signal_bid)
+                    else $error("signal_valid asserted with crossed bid/ask");
+                assert (spread == (signal_ask - signal_bid))
+                    else $error("spread does not match signal ask minus bid");
+            end
         end
     end
 
