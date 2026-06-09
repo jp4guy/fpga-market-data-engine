@@ -15,6 +15,9 @@ module tb_signal_engine;
     logic [22:0] spread;
     logic trade_signal;
 
+    logic [22:0] signal_bid;
+    logic [22:0] signal_ask;
+
     int errors = 0;
 
     signal_engine #(
@@ -29,7 +32,9 @@ module tb_signal_engine;
         .signal_valid(signal_valid),
         .signal_symbol(signal_symbol),
         .spread(spread),
-        .trade_signal(trade_signal)
+        .trade_signal(trade_signal),
+        .signal_bid(signal_bid),
+        .signal_ask(signal_ask)
     );
 
     always #5 clk = ~clk;

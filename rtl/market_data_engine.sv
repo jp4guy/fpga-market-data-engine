@@ -15,6 +15,9 @@ module market_data_engine #(
     output logic [22:0] spread,
     output logic        trade_signal,
 
+    output logic [22:0] signal_bid,
+    output logic [22:0] signal_ask,
+
     output logic [22:0] debug_best_bid,
     output logic [22:0] debug_best_ask
 );
@@ -33,7 +36,6 @@ module market_data_engine #(
     logic [22:0] best_ask;
 
     market_data_frontend #(
-        .DATA_WIDTH(32),
         .FIFO_DEPTH(FIFO_DEPTH)
     ) frontend (
         .clk(clk),
@@ -83,7 +85,10 @@ module market_data_engine #(
         .signal_valid(signal_valid),
         .signal_symbol(signal_symbol),
         .spread(spread),
-        .trade_signal(trade_signal)
+        .trade_signal(trade_signal),
+
+        .signal_bid(signal_bid),
+        .signal_ask(signal_ask)
     );
 
     assign debug_best_bid = best_bid;

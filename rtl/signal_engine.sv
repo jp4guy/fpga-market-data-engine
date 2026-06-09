@@ -12,7 +12,10 @@ module signal_engine #(
     output logic        signal_valid,
     output logic [3:0]  signal_symbol,
     output logic [22:0] spread,
-    output logic        trade_signal
+    output logic        trade_signal,
+
+    output logic [22:0] signal_bid,
+    output logic [22:0] signal_ask
 );
 
     logic prices_valid;
@@ -27,18 +30,20 @@ module signal_engine #(
             signal_symbol <= '0;
             spread        <= '0;
             trade_signal  <= 1'b0;
+            signal_bid    <= '0;
+            signal_ask    <= '0;
         end else begin
             signal_valid <= 1'b0;
 
             if (book_valid && prices_valid && (best_ask >= best_bid)) begin
                 signal_valid  <= 1'b1;
                 signal_symbol <= book_symbol;
+
+                signal_bid    <= best_bid;
+                signal_ask    <= best_ask;
                 spread        <= spread_calc;
 
-                if (spread_calc <= SPREAD_THRESHOLD)
-                    trade_signal <= 1'b1;
-                else
-                    trade_signal <= 1'b0;
+                trade_signal  <= (spread_calc <= SPREAD_THRESHOLD);
             end
         end
     end

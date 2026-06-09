@@ -17,6 +17,9 @@ module tb_market_data_engine;
     logic [22:0] spread;
     logic trade_signal;
 
+    logic [22:0] signal_bid;
+    logic [22:0] signal_ask;
+
     logic [22:0] debug_best_bid;
     logic [22:0] debug_best_ask;
 
@@ -38,6 +41,8 @@ module tb_market_data_engine;
         .signal_symbol(signal_symbol),
         .spread(spread),
         .trade_signal(trade_signal),
+        .signal_bid(signal_bid),
+        .signal_ask(signal_ask),
 
         .debug_best_bid(debug_best_bid),
         .debug_best_ask(debug_best_ask)
