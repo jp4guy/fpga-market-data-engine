@@ -3,7 +3,7 @@
 VERILATOR = verilator
 FLAGS = -Wall -Wno-BLKSEQ -Wno-UNUSEDSIGNAL --binary --trace
 
-.PHONY: smoke fifo parser frontend order_book signal_engine engine latency live test_all clean
+.PHONY: smoke fifo parser frontend order_book signal_engine engine latency live test_all throughput clean
 
 smoke:
 >$(VERILATOR) $(FLAGS) sim/tb_smoke.sv rtl/smoke_counter.sv -o smoke_test
@@ -45,7 +45,11 @@ randomized:
 >$(VERILATOR) $(FLAGS) sim/tb_randomized_engine.sv rtl/market_data_engine.sv rtl/market_data_frontend.sv rtl/fifo.sv rtl/packet_parser.sv rtl/order_book.sv rtl/signal_engine.sv -o randomized_engine_test
 >./obj_dir/randomized_engine_test
 
-test_all: smoke fifo parser frontend order_book signal_engine engine latency randomized
+throughput:
+>$(VERILATOR) $(FLAGS) sim/tb_throughput_engine.sv rtl/market_data_engine.sv rtl/market_data_frontend.sv rtl/fifo.sv rtl/packet_parser.sv rtl/order_book.sv rtl/signal_engine.sv -o throughput_engine_test
+>./obj_dir/throughput_engine_test
+
+test_all: smoke fifo parser frontend order_book signal_engine engine latency randomized throughput
 
 clean:
 >rm -rf obj_dir
