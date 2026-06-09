@@ -1,11 +1,11 @@
 `timescale 1ns/1ps
 
 module event_packet_parser (
-    input  logic                         packet_valid,
-    input  logic [63:0]                  packet_data,
+    input  logic                              packet_valid,
+    input  logic [63:0]                       packet_data,
 
-    output logic                         event_valid,
-    output market_types_pkg::market_event_t parsed_event
+    output logic                              event_valid,
+    output market_types_pkg::market_event_t  parsed_event
 );
 
     logic [1:0] raw_event_type;

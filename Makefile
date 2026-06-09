@@ -68,3 +68,9 @@ stress:
 stress_trace:
 >$(VERILATOR) $(FLAGS) sim/tb_streaming_stress.sv rtl/market_data_engine.sv rtl/market_data_frontend.sv rtl/fifo.sv rtl/packet_parser.sv rtl/order_book.sv rtl/signal_engine.sv -o streaming_stress_test
 >./obj_dir/streaming_stress_test +NUM_PACKETS=$(TRACE_PACKETS) +TRACE
+
+.PHONY: event_parser
+
+event_parser:
+>$(VERILATOR) $(FLAGS) rtl/market_types_pkg.sv rtl/event_packet_parser.sv sim/tb_event_packet_parser.sv -o event_parser_test
+>./obj_dir/event_parser_test

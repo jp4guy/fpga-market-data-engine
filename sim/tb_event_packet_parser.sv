@@ -108,6 +108,9 @@ module tb_event_packet_parser;
     endtask
 
     initial begin
+        packet_valid = 1'b0;
+        packet_data  = '0;
+
         $dumpfile("event_parser_trace.vcd");
         $dumpvars(0, tb_event_packet_parser);
 
