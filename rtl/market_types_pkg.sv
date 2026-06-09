@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 package market_types_pkg;
     timeunit 1ns;
     timeprecision 1ps;

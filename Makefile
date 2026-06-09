@@ -59,11 +59,11 @@ engine:
 >./obj_dir/engine_test
 
 event_engine:
->$(VERILATOR) $(FLAGS) sim/tb_event_market_data_engine.sv $(EVENT_ENGINE_SRCS) -o event_engine_test
+>$(VERILATOR) $(FLAGS) -f filelists/event_engine.f sim/tb_event_market_data_engine.sv -o event_engine_test
 >./obj_dir/event_engine_test
 
 event_engine_risk:
->$(VERILATOR) $(FLAGS) sim/tb_event_market_data_engine_risk.sv $(EVENT_ENGINE_SRCS) -o event_engine_risk_test
+>$(VERILATOR) $(FLAGS) $(EVENT_ENGINE_SRCS) sim/tb_event_market_data_engine_risk.sv -o event_engine_risk_test
 >./obj_dir/event_engine_risk_test
 
 latency:
@@ -71,7 +71,7 @@ latency:
 >./obj_dir/latency_test
 
 event_latency:
->$(VERILATOR) $(FLAGS) sim/tb_event_latency.sv $(EVENT_ENGINE_SRCS) -o event_latency_test
+>$(VERILATOR) $(FLAGS) $(EVENT_ENGINE_SRCS) sim/tb_event_latency.sv -o event_latency_test
 >./obj_dir/event_latency_test
 
 live:
@@ -116,9 +116,9 @@ stress_trace:
 >./obj_dir/streaming_stress_test +NUM_PACKETS=$(TRACE_PACKETS) +TRACE
 
 event_stress:
->$(VERILATOR) $(FLAGS) sim/tb_event_streaming_stress.sv $(EVENT_ENGINE_SRCS) -o event_streaming_stress_test
+>$(VERILATOR) $(FLAGS) $(EVENT_ENGINE_SRCS) sim/tb_event_streaming_stress.sv -o event_streaming_stress_test
 >./obj_dir/event_streaming_stress_test +NUM_EVENTS=$(EVENT_STRESS_EVENTS)
 
 event_stress_trace:
->$(VERILATOR) $(FLAGS) sim/tb_event_streaming_stress.sv $(EVENT_ENGINE_SRCS) -o event_streaming_stress_test
+>$(VERILATOR) $(FLAGS) $(EVENT_ENGINE_SRCS) sim/tb_event_streaming_stress.sv -o event_streaming_stress_test
 >./obj_dir/event_streaming_stress_test +NUM_EVENTS=$(EVENT_TRACE_EVENTS) +TRACE

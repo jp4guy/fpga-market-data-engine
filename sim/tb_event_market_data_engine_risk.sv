@@ -1,6 +1,11 @@
 `timescale 1ns/1ps
 
-import market_types_pkg::*;
+import market_types_pkg::event_type_t;
+import market_types_pkg::market_event_t;
+import market_types_pkg::EVENT_ADD;
+import market_types_pkg::EVENT_CANCEL;
+import market_types_pkg::EVENT_EXECUTE;
+import market_types_pkg::EVENT_INVALID;
 
 module tb_event_market_data_engine_risk;
 

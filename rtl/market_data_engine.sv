@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module market_data_engine #(
     parameter int FIFO_DEPTH = 4,
     parameter int NUM_SYMBOLS = 4,

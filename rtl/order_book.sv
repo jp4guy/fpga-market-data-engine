@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module order_book #(
     parameter int NUM_SYMBOLS = 4
 ) (

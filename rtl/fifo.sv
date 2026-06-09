@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module fifo #(
     parameter int DATA_WIDTH = 32,
     parameter int DEPTH = 4

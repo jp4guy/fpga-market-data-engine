@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module event_signal_engine #(
     parameter logic [15:0] SPREAD_THRESHOLD = 16'd10
 ) (

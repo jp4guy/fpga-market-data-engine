@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 import market_types_pkg::market_event_t;
 
 module event_market_data_engine #(

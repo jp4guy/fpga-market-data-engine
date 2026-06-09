@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module signal_engine #(
     parameter logic [22:0] SPREAD_THRESHOLD = 23'd10
 ) (

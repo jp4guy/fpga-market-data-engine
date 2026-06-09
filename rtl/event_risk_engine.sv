@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module event_risk_engine #(
     parameter logic [15:0] MAX_RISK_SPREAD = 16'd100,
     parameter logic [15:0] MAX_ORDER_QTY   = 16'd1000

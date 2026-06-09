@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 import market_types_pkg::event_type_t;
 import market_types_pkg::market_event_t;
 

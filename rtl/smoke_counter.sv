@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module smoke_counter (
     input  logic       clk,
     input  logic       rst,
