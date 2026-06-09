@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module market_data_frontend #(
     parameter int DATA_WIDTH = 32,
     parameter int FIFO_DEPTH = 4

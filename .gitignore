@@ -6,3 +6,6 @@ obj_dir/
 Vtb_*
 verilated*.d
 verilated*.o
+sim/generated_event_order_book_vectors.txt
+__pycache__/
+*.pyc

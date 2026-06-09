@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module packet_parser (
     input  logic        packet_valid,
     input  logic [31:0] packet_data,
